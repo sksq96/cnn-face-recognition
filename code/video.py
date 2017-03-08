@@ -36,7 +36,7 @@ def save(obj, file=str(int(time()))):
 
 def main():
 	file = sys.argv[1]
-	faces = encodeVideo(file, 10)
+	faces = encodeVideo(file, 1)
 	save(faces)
 
 if __name__ == '__main__':
