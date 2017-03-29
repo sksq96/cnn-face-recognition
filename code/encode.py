@@ -1,9 +1,11 @@
 #!/usr/bin/env python2
 
 import cv2
-import openface
+import numpy as np
 
 import dlib
+
+import openface
 from model import align, net
 
 
@@ -32,10 +34,14 @@ def ddetect(bgrImg):
 def detect(bgrImg):
 	rgbImg = cv2.cvtColor(bgrImg, cv2.COLOR_BGR2RGB)
 	bb = align.getAllFaceBoundingBoxes(rgbImg)
+	
+	faces = []
 	for box in bb:
-		x1, y1, w1, h1 = box.left(), box.top(), box.right(), box.bottom()
-		cv2.rectangle(bgrImg, (x1, y1), (w1, h1), (0, 321, 123), 3)
-	return bgrImg
+		x, y, w, h = box.left(), box.top(), box.right(), box.bottom()
+		faces.append(np.array(bgrImg[y: h, x: w]))
+		cv2.rectangle(bgrImg, (x, y), (w, h), (0, 321, 123), 3)
+
+	return bgrImg, faces
 
 
 def getRep(bgrImg):
