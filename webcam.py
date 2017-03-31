@@ -2,20 +2,20 @@
 # @Author: shubham
 # @Date:   2016-08-27 19:42:11
 # @Last Modified by:   Shubham Chandel
-# @Last Modified time: 2017-03-31 05:52:50
+# @Last Modified time: 2017-03-31 06:02:22
 
 import cv2
 import sys
 import os
-from time import sleep
+from time import sleep, time
 
 STEP = 20
-directory = '/home/shubham/Documents/MTProject/OpenFace/data/{}/raw/{}'.format(int(time.time()) sys.argv[1].capitalize())
+directory = '/root/openface/data/{}/raw/{}'.format(sys.argv[1].capitalize(), sys.argv[2].capitalize())
 if not os.path.exists(directory):
 	os.makedirs(directory)
 
 video_capture = cv2.VideoCapture(0)
-for i in range(400):
+for i in range(20):
 	ret, frame = video_capture.read()
 	cv2.imshow('Video', frame)
 	if i%STEP == 0:

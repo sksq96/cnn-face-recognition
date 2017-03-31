@@ -158,8 +158,8 @@ if __name__ == '__main__':
         type=int,
         default=0,
         help='Capture device. 0 for latop webcam and 1 for usb webcam')
-    parser.add_argument('--width', type=int, default=320)
-    parser.add_argument('--height', type=int, default=240)
+    parser.add_argument('--width', type=int, default=620)
+    parser.add_argument('--height', type=int, default=640)
     parser.add_argument('--threshold', type=float, default=0.2)
     parser.add_argument('--cuda', action='store_true')
     parser.add_argument('--verbose', action='store_true')
