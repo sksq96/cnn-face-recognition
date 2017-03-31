@@ -2,7 +2,7 @@
 # @Author: shubham
 # @Date:   2016-08-27 19:42:11
 # @Last Modified by:   Shubham Chandel
-# @Last Modified time: 2016-10-06 02:31:39
+# @Last Modified time: 2017-03-31 05:52:50
 
 import cv2
 import sys
@@ -10,7 +10,7 @@ import os
 from time import sleep
 
 STEP = 20
-directory = '/home/shubham/Documents/MTProject/OpenFace/mydata/raw/{}'.format(sys.argv[1].capitalize())
+directory = '/home/shubham/Documents/MTProject/OpenFace/data/{}/raw/{}'.format(int(time.time()) sys.argv[1].capitalize())
 if not os.path.exists(directory):
 	os.makedirs(directory)
 
