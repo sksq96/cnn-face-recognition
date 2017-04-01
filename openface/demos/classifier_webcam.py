@@ -199,9 +199,12 @@ if __name__ == '__main__':
             if c <= args.threshold:  # 0.5 is kept as threshold for known face.
                 persons[i] = "_unknown"
 
-                # Print the person name and conf value on the frame
-        cv2.putText(frame, "{} with {} confidence".format(persons, confidences),
-                    (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 123, 321), 2)
+            # Print the person name and conf value on the frame
+        i = 0
+        for person, confidence in zip(persons, confidences):
+	        cv2.putText(frame, "{} ({}%)".format(person, round(confidence*100, 1)),(50, 50+i*30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 100, 300), 2)
+	        i += 1
+        
         cv2.imshow('', frame)
         # quit the program on the press of key 'q'
         if cv2.waitKey(1) & 0xFF == ord('q'):
