@@ -208,7 +208,14 @@ def infer(args):
 				dist = np.linalg.norm(rep - clf.means_[maxI])
 				print("  + Distance from the mean: {}".format(dist))
 				pass
-		print persons, confidences
+
+		
+		frame = cv2.imread(img)
+		if persons:
+			cv2.putText(frame, "{} ({}%)".format(persons[0], round(confidences[0]*100, 1)),(5, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 100, 300), 2)
+		cv2.imwrite(img.replace('test', 'output'), frame)
+		
+		print persons, confidences, img
 		# print()
 
 
