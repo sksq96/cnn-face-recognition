@@ -215,7 +215,9 @@ def infer(args):
 			cv2.putText(frame, "{} ({}%)".format(persons[0], round(confidences[0]*100, 1)),(5, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 100, 300), 2)
 		cv2.imwrite(img.replace('test', 'output'), frame)
 		
-		print persons, confidences, img
+		if len(persons) != 0:
+			print persons, img
+			# print persons, confidences, img
 		# print()
 
 

@@ -1,18 +1,32 @@
 # @Author: shubham
 # @Date:   2016-09-13 19:31:15
 # @Last Modified by:   Shubham Chandel
-# @Last Modified time: 2017-04-05 18:26:10
+# @Last Modified time: 2017-04-26 15:04:50
 
 
-# python webcam.py classdemo tushar
+folder="cluster"
 
-sudo chmod 777 -R data/classdemo/aligned
-rm -rfr data/classdemo/aligned/*
 
-openface/./util/align-dlib.py data/classdemo/raw align outerEyesAndNose data/classdemo/aligned --size 96
-openface/./batch-represent/main.lua -outDir data/classdemo/feature -data data/classdemo/aligned
-code/./classifier.py train data/classdemo/feature
 
-# code/./classifier.py infer data/classdemo/feature/classifier.pkl data/classdemo/test/*
-openface/./demos/classifier_webcam.py data/classdemo/feature/classifier.pkl
+# emply aligned
+# sudo chmod 777 -R data/$folder/aligned
+# rm -rfr data/$folder/aligned/*
+
+
+# align landmarks, store in aligned
+# openface/./util/align-dlib.py data/$folder/raw align outerEyesAndNose data/$folder/aligned --size 96
+
+# extract features
+# openface/./batch-represent/main.lua -outDir data/$folder/nfeature -data data/$folder/cluster
+
+# train the classifier
+# code/./classifier.py train data/$folder/nfeature
+
+# test the training
+code/./classifier.py infer data/$folder/nfeature/classifier.pkl data/$folder/test/*
+
+
+# webcam stuff
+# python webcam.py $folder tushar
+# openface/./demos/classifier_webcam.py data/$folder/feature/classifier.pkl
 
